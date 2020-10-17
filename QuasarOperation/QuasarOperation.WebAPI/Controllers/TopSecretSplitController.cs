@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using QuasarOperation.Domain;
 using QuasarOperation.Domain.Contracts.Model;
 using QuasarOperation.Domain.Interfaces.Services;
 
@@ -23,7 +24,7 @@ namespace QuasarOperation.WebAPI.Controllers
         [HttpPost]
         public IActionResult Post(TransmissionContract transmission)
         {
-            
+            _messageRecovery.ReceiveMessage(new ReceivedMessage() { });
 
             return Ok();
         }
