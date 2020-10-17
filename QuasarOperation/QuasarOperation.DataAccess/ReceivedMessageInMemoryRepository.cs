@@ -8,6 +8,8 @@ namespace QuasarOperation.DataAccess
 {
     public class ReceivedMessageInMemoryRepository : IReceivedMessageRepository
     {
+        private static IEnumerable<ReceivedMessage> _receivedMessages = new List<ReceivedMessage>();
+
         public IEnumerable<ReceivedMessage> GetAll()
         {
             throw new NotImplementedException();
@@ -16,6 +18,8 @@ namespace QuasarOperation.DataAccess
         public ReceivedMessage GetBySatelliteName(string name)
         {
             if (string.IsNullOrEmpty(name)) throw new ArgumentNullException(nameof(name));
+
+
         }
 
         public void Save(ReceivedMessage receivedMessage)

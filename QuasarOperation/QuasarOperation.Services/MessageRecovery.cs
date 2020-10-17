@@ -16,14 +16,16 @@ namespace QuasarOperation.Services
         #region Private Members
 
         private readonly ISatelliteRepository _satelliteRepository;
-
+        private readonly IReceivedMessageRepository _receivedMessageRepository;
         #endregion
 
         #region Constructor
 
-        public MessageRecovery(ISatelliteRepository satelliteRepository)
+        public MessageRecovery(ISatelliteRepository satelliteRepository,
+                               IReceivedMessageRepository receivedMessageRepository)
         {
             _satelliteRepository = satelliteRepository ?? throw new ArgumentNullException(nameof(satelliteRepository));
+            _receivedMessageRepository = receivedMessageRepository ?? throw new ArgumentNullException(nameof(receivedMessageRepository));
         }
 
         #endregion
@@ -57,6 +59,17 @@ namespace QuasarOperation.Services
                                                x.t3.AsNullIfWhiteSpace()).Distinct();
 
             return new RecoveredMessage() { Message = string.Join(' ', readable) };
+        }
+
+        /// <summary>
+        /// Recibe los mensajes del espacio y los guarda para posterior decodificación
+        /// </summary>
+        /// <param name="transmission"></param>
+        public void ReceiveMessage(ReceivedMessage transmission)
+        {
+            if (transmission == null) throw new ArgumentNullException(nameof(transmission));
+
+            _receivedMessageRepository.Save(transmission);
         }
 
         #endregion
