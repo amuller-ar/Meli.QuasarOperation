@@ -8,5 +8,6 @@ namespace QuasarOperation.Domain.Interfaces.Services
     {
         Coordinate GetLocation(double distance, Coordinate location1, Coordinate location2);
         Coordinate GetLocation(IEnumerable<ReceivedMessage> transmission);
+        Coordinate TryGetLocation();
     }
 }

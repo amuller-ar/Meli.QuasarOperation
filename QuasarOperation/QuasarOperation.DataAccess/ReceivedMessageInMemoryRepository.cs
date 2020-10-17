@@ -13,7 +13,7 @@ namespace QuasarOperation.DataAccess
 
         public IEnumerable<ReceivedMessage> GetAll()
         {
-            throw new NotImplementedException();
+            return _receivedMessages;
         }
 
         public ReceivedMessage GetBySatelliteName(string name)
@@ -25,7 +25,22 @@ namespace QuasarOperation.DataAccess
 
         public void Save(ReceivedMessage receivedMessage)
         {
-            throw new NotImplementedException();
+            if (receivedMessage == null) throw new ArgumentNullException(nameof(receivedMessage));
+
+            if (_receivedMessages.Any(m => m.SatelliteName.Equals(receivedMessage.SatelliteName)))
+            {
+                _receivedMessages.Where(m => m.SatelliteName.Equals(receivedMessage.SatelliteName))
+                                .Select((m) =>
+                                {
+                                    m.Message = receivedMessage.Message;
+                                    m.Distance = receivedMessage.Distance;
+                                    return m;
+                                });
+            }
+            else
+            {
+                _receivedMessages.Append(receivedMessage);
+            }
         }
     }
 }

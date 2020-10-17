@@ -15,5 +15,7 @@ namespace QuasarOperation.Domain.Interfaces.Services
         RecoveredMessage GetMessage(IEnumerable<ReceivedMessage> transmission);
 
         void ReceiveMessage(ReceivedMessage transmission);
+
+        RecoveredMessage TryRecoverMessage();
     }
 }

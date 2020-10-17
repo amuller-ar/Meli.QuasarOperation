@@ -32,6 +32,11 @@ namespace QuasarOperation.Services
 
         #region Public
 
+        /// <summary>
+        /// Obtiene el mensaje completo si es posible
+        /// </summary>
+        /// <param name="transmission">transmisiones recibidas</param>
+        /// <returns></returns>
         public RecoveredMessage GetMessage(IEnumerable<ReceivedMessage> transmission)
         {
             if (transmission.Count() != 3)
@@ -70,6 +75,15 @@ namespace QuasarOperation.Services
             if (transmission == null) throw new ArgumentNullException(nameof(transmission));
 
             _receivedMessageRepository.Save(transmission);
+        }
+
+        /// <summary>
+        /// Intenta recuperar el mensaje que se fueron recibiendo 
+        /// </summary>
+        /// <returns></returns>
+        public RecoveredMessage TryRecoverMessage()
+        {
+            return GetMessage(_receivedMessageRepository.GetAll());
         }
 
         #endregion
