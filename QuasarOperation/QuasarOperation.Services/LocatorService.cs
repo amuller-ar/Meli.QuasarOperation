@@ -13,20 +13,29 @@ namespace QuasarOperation.Services
     {
         #region private members
         private readonly ISatelliteRepository _satelliteRepository;
+        private readonly IReceivedMessageRepository _receivedMessageRepository;
         #endregion
 
         #region constructor
 
-        public LocatorService(ISatelliteRepository satelliteRepository)
+        public LocatorService(ISatelliteRepository satelliteRepository,
+                              IReceivedMessageRepository receivedMessageRepository)
         {
             _satelliteRepository  = satelliteRepository ?? throw new ArgumentNullException(nameof(satelliteRepository));
+            _receivedMessageRepository = receivedMessageRepository ?? throw new ArgumentNullException(nameof(receivedMessageRepository));
         }
 
         #endregion
 
         #region public 
 
-
+        /// <summary>
+        /// Determina la ubicación de la nave
+        /// </summary>
+        /// <param name="shipDistance"></param>
+        /// <param name="location1"></param>
+        /// <param name="location2"></param>
+        /// <returns></returns>
         public Coordinate GetLocation(double shipDistance, Coordinate location1, Coordinate location2)
         {
             //vectores 
@@ -46,6 +55,11 @@ namespace QuasarOperation.Services
             return new Coordinate(x, y);
         }
 
+        /// <summary>
+        /// Determina la ubicación de la nave con las transmisiones recibidas
+        /// </summary>
+        /// <param name="transmission"></param>
+        /// <returns></returns>
         public Coordinate GetLocation(IEnumerable<ReceivedMessage> transmission)
         {
             if (transmission.Count() < 2)
@@ -59,6 +73,15 @@ namespace QuasarOperation.Services
             var location2 = _satelliteRepository.GetByName(tr[1].SatelliteName).Location;
 
             return GetLocation(tr.First().Distance,location1,location2);
+        }
+
+        /// <summary>
+        /// Intenta determinar la ubicación de la nave con las transmisiones que se fueron recibiendo
+        /// </summary>
+        /// <returns></returns>
+        public Coordinate TryGetLocation()
+        {
+            return GetLocation(_receivedMessageRepository.GetAll());
         }
 
         #endregion

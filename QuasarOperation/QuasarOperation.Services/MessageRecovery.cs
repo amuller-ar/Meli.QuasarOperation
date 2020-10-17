@@ -16,20 +16,27 @@ namespace QuasarOperation.Services
         #region Private Members
 
         private readonly ISatelliteRepository _satelliteRepository;
-
+        private readonly IReceivedMessageRepository _receivedMessageRepository;
         #endregion
 
         #region Constructor
 
-        public MessageRecovery(ISatelliteRepository satelliteRepository)
+        public MessageRecovery(ISatelliteRepository satelliteRepository,
+                               IReceivedMessageRepository receivedMessageRepository)
         {
             _satelliteRepository = satelliteRepository ?? throw new ArgumentNullException(nameof(satelliteRepository));
+            _receivedMessageRepository = receivedMessageRepository ?? throw new ArgumentNullException(nameof(receivedMessageRepository));
         }
 
         #endregion
 
         #region Public
 
+        /// <summary>
+        /// Obtiene el mensaje completo si es posible
+        /// </summary>
+        /// <param name="transmission">transmisiones recibidas</param>
+        /// <returns></returns>
         public RecoveredMessage GetMessage(IEnumerable<ReceivedMessage> transmission)
         {
             if (transmission.Count() != 3)
@@ -57,6 +64,26 @@ namespace QuasarOperation.Services
                                                x.t3.AsNullIfWhiteSpace()).Distinct();
 
             return new RecoveredMessage() { Message = string.Join(' ', readable) };
+        }
+
+        /// <summary>
+        /// Recibe los mensajes del espacio y los guarda para posterior decodificación
+        /// </summary>
+        /// <param name="transmission"></param>
+        public void ReceiveMessage(ReceivedMessage transmission)
+        {
+            if (transmission == null) throw new ArgumentNullException(nameof(transmission));
+
+            _receivedMessageRepository.Save(transmission);
+        }
+
+        /// <summary>
+        /// Intenta recuperar el mensaje que se fueron recibiendo 
+        /// </summary>
+        /// <returns></returns>
+        public RecoveredMessage TryRecoverMessage()
+        {
+            return GetMessage(_receivedMessageRepository.GetAll());
         }
 
         #endregion
