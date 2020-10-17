@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuasarOperation.Services", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuasarOperation.Domain", "QuasarOperation.Domain\QuasarOperation.Domain.csproj", "{756253A1-735D-4B1F-81BB-E656952F2715}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuasarOperation.DataAccess", "QuasarOperation.DataAccess\QuasarOperation.DataAccess.csproj", "{17A18978-40A6-4689-915D-77BCB653302F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuasarOperation.DataAccess", "QuasarOperation.DataAccess\QuasarOperation.DataAccess.csproj", "{17A18978-40A6-4689-915D-77BCB653302F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuasarOperation.Test", "QuasarOperation.Test\QuasarOperation.Test.csproj", "{9EA00A4F-5903-4A82-8BB2-645138254156}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{17A18978-40A6-4689-915D-77BCB653302F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17A18978-40A6-4689-915D-77BCB653302F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17A18978-40A6-4689-915D-77BCB653302F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EA00A4F-5903-4A82-8BB2-645138254156}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EA00A4F-5903-4A82-8BB2-645138254156}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EA00A4F-5903-4A82-8BB2-645138254156}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EA00A4F-5903-4A82-8BB2-645138254156}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

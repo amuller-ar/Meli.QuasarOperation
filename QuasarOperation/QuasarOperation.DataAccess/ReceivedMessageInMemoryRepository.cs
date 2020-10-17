@@ -2,6 +2,7 @@
 using QuasarOperation.Domain.Interfaces.Repostories;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace QuasarOperation.DataAccess
@@ -19,7 +20,7 @@ namespace QuasarOperation.DataAccess
         {
             if (string.IsNullOrEmpty(name)) throw new ArgumentNullException(nameof(name));
 
-
+            return _receivedMessages.Where(m => m.SatelliteName.Equals(name)).FirstOrDefault();
         }
 
         public void Save(ReceivedMessage receivedMessage)
