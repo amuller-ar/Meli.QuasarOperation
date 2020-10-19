@@ -6,8 +6,8 @@ Challenge Mercado Libre
 
 La web api consta de 2 controllers
 
- *TopSecretController       
- *TopSecretSplitController
+ * TopSecretController       
+ * TopSecretSplitController
 
 Mi idea fue utilizar SOLID para desacoplar lo máximo posible cada componente
 
@@ -41,11 +41,11 @@ El pryecto _QuasarOperation.Domain_ se encuentran modeladas las entidades de dom
 La misma cuenta con swagger  pero también la pueden acceder directamente
 
  ### para utilizarla con swagger
-  {url_host}/swagger 
+  https://meli-dotnet-webapi.rj.r.appspot.com/swagger/index.html 
   
  ### para accederla directamente
-  {url_host}/api/TopSecret
-  {url_host}/api/TopSecretSplit
+    https://meli-dotnet-webapi.rj.r.appspot.com/api/TopSecret
+    https://meli-dotnet-webapi.rj.r.appspot.com//api/TopSecretSplit
   
   Pueden utilizar aplicaciones como POSTMAN para hacer las pruebas (recomiendo usar swagger ya que esta disponible en la misma webapi)
   
