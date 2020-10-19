@@ -39,7 +39,7 @@ namespace QuasarOperation.DataAccess
             }
             else
             {
-                _receivedMessages.Append(receivedMessage);
+                _receivedMessages = _receivedMessages.Append(receivedMessage);
             }
         }
     }

@@ -18,6 +18,7 @@ namespace QuasarOperation.WebAPI.Middleware
             services.AddScoped<IMessageRecovery, MessageRecovery>();
             services.AddTransient<ILocatorService, LocatorService>();
             services.AddTransient<ISatelliteRepository, SatelliteInMemoryRepository>();
+            services.AddTransient<IReceivedMessageRepository, ReceivedMessageInMemoryRepository>();
 
             return services;
         }
