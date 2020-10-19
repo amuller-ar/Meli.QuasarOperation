@@ -11,7 +11,7 @@ using System.Text;
 
 namespace QuasarOperation.Services
 {
-    public class MessageRecovery : IMessageRecovery
+    public class MessageRecoveryService : IMessageRecoveryService
     {
         #region Private Members
 
@@ -21,7 +21,7 @@ namespace QuasarOperation.Services
 
         #region Constructor
 
-        public MessageRecovery(ISatelliteRepository satelliteRepository,
+        public MessageRecoveryService(ISatelliteRepository satelliteRepository,
                                IReceivedMessageRepository receivedMessageRepository)
         {
             _satelliteRepository = satelliteRepository ?? throw new ArgumentNullException(nameof(satelliteRepository));
@@ -58,6 +58,13 @@ namespace QuasarOperation.Services
                                          tr[2].Message,
                                          (t1, t2, t3) => new { t1, t2, t3 });
 
+            if(message.Any(m=> m.t1.AsNullIfWhiteSpace() == null && 
+                               m.t2.AsNullIfWhiteSpace() == null && 
+                               m.t3.AsNullIfWhiteSpace() == null))
+            {
+                throw new CantRecoverMessageException($"No se puede recuperar el mensaje, mensaje incompleto");
+            }
+
             //luego elegimos la primera que tenga definida para la misma limpiando las repetidas
             var readable = message.Select(x => x.t1.AsNullIfWhiteSpace() ??
                                                x.t2.AsNullIfWhiteSpace() ??
@@ -65,6 +72,8 @@ namespace QuasarOperation.Services
 
             return new RecoveredMessage() { Message = string.Join(' ', readable) };
         }
+
+        
 
         /// <summary>
         /// Recibe los mensajes del espacio y los guarda para posterior decodificación

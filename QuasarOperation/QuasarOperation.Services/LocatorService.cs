@@ -40,7 +40,7 @@ namespace QuasarOperation.Services
         {
             //vectores 
             var deltaX = location1.X - location2.X;
-            var deltaY = location2.Y - location2.Y;
+            var deltaY = location1.Y - location2.Y;
 
             //distancia entre 2 satelites
             var distance = Math.Sqrt(Math.Pow(deltaX, 2) + Math.Pow(deltaY, 2));
@@ -64,7 +64,7 @@ namespace QuasarOperation.Services
         {
             if (transmission.Count() < 2)
             {
-                throw new CantRecoverMessageException("No se puede obtener la localización");
+                throw new CantDeterminateLocationException("No se puede obtener la localización");
             }
 
             var tr = transmission.ToList();

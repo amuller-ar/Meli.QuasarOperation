@@ -5,7 +5,7 @@ using System.Text;
 
 namespace QuasarOperation.Domain.Interfaces.Services
 {
-    public interface IMessageRecovery
+    public interface IMessageRecoveryService
     {
         /// <summary>
         /// Obtiene el mensaje recuperado de las transmisiones recibidas por los satelites

@@ -12,6 +12,12 @@ namespace QuasarOperation.WebAPI.Filters
                 context.HttpContext.Response.StatusCode = exception.Status;
                 context.ExceptionHandled = true;
             }
+
+            if (context.Exception is CantDeterminateLocationException locationException)
+            {
+                context.HttpContext.Response.StatusCode = locationException.Satatus;
+                context.ExceptionHandled = true;
+            }
         }
 
         public void OnActionExecuting(ActionExecutingContext context) { }
