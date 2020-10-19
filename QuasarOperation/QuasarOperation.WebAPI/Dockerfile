@@ -11,6 +11,9 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-nanoserver-1903 AS build
 WORKDIR /src
 COPY ["QuasarOperation.WebAPI/QuasarOperation.WebAPI.csproj", "QuasarOperation.WebAPI/"]
+COPY ["QuasarOperation.Services/QuasarOperation.Services.csproj", "QuasarOperation.Services/"]
+COPY ["QuasarOperation.Domain/QuasarOperation.Domain.csproj", "QuasarOperation.Domain/"]
+COPY ["QuasarOperation.DataAccess/QuasarOperation.DataAccess.csproj", "QuasarOperation.DataAccess/"]
 RUN dotnet restore "QuasarOperation.WebAPI/QuasarOperation.WebAPI.csproj"
 COPY . .
 WORKDIR "/src/QuasarOperation.WebAPI"

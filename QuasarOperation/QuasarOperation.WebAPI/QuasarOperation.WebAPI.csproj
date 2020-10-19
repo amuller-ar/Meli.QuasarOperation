@@ -17,5 +17,7 @@
     <ProjectReference Include="..\QuasarOperation.Domain\QuasarOperation.Domain.csproj" />
     <ProjectReference Include="..\QuasarOperation.Services\QuasarOperation.Services.csproj" />
   </ItemGroup>
-
+  <ItemGroup>
+    <None Include="app.yaml" CopyToOutputDirectory="Always" />
+  </ItemGroup>
 </Project>
