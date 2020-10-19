@@ -15,10 +15,10 @@ namespace QuasarOperation.WebAPI.Controllers
     [ApiController]
     public class TopSecretController : ControllerBase
     {
-        private readonly IMessageRecovery _messageRecovery;
+        private readonly IMessageRecoveryService _messageRecovery;
         private readonly ILocatorService _locatorService;
 
-        public TopSecretController(IMessageRecovery messageRecovery,
+        public TopSecretController(IMessageRecoveryService messageRecovery,
                                    ILocatorService locatorService)
         {
             _messageRecovery = messageRecovery ?? throw new ArgumentNullException(nameof(messageRecovery));

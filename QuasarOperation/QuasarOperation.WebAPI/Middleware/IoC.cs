@@ -14,10 +14,10 @@ namespace QuasarOperation.WebAPI.Middleware
     {
         public static IServiceCollection AddRegistration(this IServiceCollection services)
         {
-            //agregar servicios aca
-            services.AddScoped<IMessageRecovery, MessageRecovery>();
+            services.AddTransient<IMessageRecoveryService, MessageRecoveryService>();
             services.AddTransient<ILocatorService, LocatorService>();
             services.AddTransient<ISatelliteRepository, SatelliteInMemoryRepository>();
+            services.AddTransient<IReceivedMessageRepository, ReceivedMessageInMemoryRepository>();
 
             return services;
         }
