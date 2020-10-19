@@ -22,6 +22,7 @@ La lógica de negocio esta implementada en el proyecto de _QuasarOperation.Servi
 El pryecto _QuasarOperation.Domain_ se encuentran modeladas las entidades de dominio y las interfaces tanto de los repositorios como de los services
 
 
+
 ##TopSecretController       
  Recibe una colección de transmisiones mediante un POST
  Este controller espera siempre que se especifiquen las transmisiones a los 3 satellites para devolver una respuesta
@@ -45,3 +46,6 @@ La misma cuenta con swagger  pero también la pueden acceder directamente
  ###para accederla directamente
   {url_host}/api/TopSecret
   {url_host}/api/TopSecretSplit
+  
+  Pueden utilizar aplicaciones como POSTMAN para hacer las pruebas (recomiendo usar swagger ya que esta disponible en la misma webapi)
+  
