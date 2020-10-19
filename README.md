@@ -2,7 +2,7 @@
 
 Challenge Mercado Libre
 
-##General
+## General
 
 La web api consta de 2 controllers
 
@@ -23,27 +23,27 @@ El pryecto _QuasarOperation.Domain_ se encuentran modeladas las entidades de dom
 
 
 
-##TopSecretController       
+## TopSecretController       
  Recibe una colección de transmisiones mediante un POST
  Este controller espera siempre que se especifiquen las transmisiones a los 3 satellites para devolver una respuesta
  caso contrario devuelve 404  o 400 si el request está incompleto
  
 
-##TopSecretSplitController
+## TopSecretSplitController
  Este controller esta diseñado para recibir una transmisión por vez mediante POST
  en caso de que ya exista una para el mismo satélite esta se actualiza
  
  Mediante GET puede intentar recuperar el mensaje y la ubicación de la nave en caso de ser posible, caso contrario se obteiene un SatusCode 404 
  
  
-##Como utilizar la webapi
+## Como utilizar la webapi
 
 La misma cuenta con swagger  pero también la pueden acceder directamente
 
- ###para utilizarla con swagger
+ ### para utilizarla con swagger
   {url_host}/swagger 
   
- ###para accederla directamente
+ ### para accederla directamente
   {url_host}/api/TopSecret
   {url_host}/api/TopSecretSplit
   
