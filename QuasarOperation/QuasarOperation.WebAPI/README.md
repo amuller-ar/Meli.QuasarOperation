@@ -41,8 +41,8 @@ El pryecto _QuasarOperation.Domain_ se encuentran modeladas las entidades de dom
 La misma cuenta con swagger  pero también la pueden acceder directamente
 
  ### para utilizarla con swagger
-    https://meli-challenge-alan.rj.r.appspot.com/swagger/index.html  
-
+  https://meli-dotnet-webapi.rj.r.appspot.com/swagger/index.html 
+  
  ### para accederla directamente
     https://meli-challenge-alan.rj.r.appspot.com/api/TopSecret
     https://meli-challenge-alan.rj.r.appspot.com/api/TopSecretSplit
