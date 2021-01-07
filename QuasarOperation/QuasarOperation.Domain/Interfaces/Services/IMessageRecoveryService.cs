@@ -17,5 +17,6 @@ namespace QuasarOperation.Domain.Interfaces.Services
         void ReceiveMessage(ReceivedMessage transmission);
 
         RecoveredMessage TryRecoverMessage();
+        void OOtroMetodo();
     }
 }
